@@ -33,14 +33,6 @@ class CNN(nn.Module):
     x = torch.flatten(x, 1)
     x = self.classifier(x)
     return x
-
-transformer = transforms.Compose([
-    transforms.Resize((224, 224)),
-    transforms.RandomHorizontalFlip(0.5),
-    transforms.RandomRotation(25),
-    transforms.ToTensor(),
-    transforms.Normalize((0.5, 0.5, 0.5),(0.5, 0.5, 0.5))
-])
 transformer2 = transforms.Compose([
     transforms.Resize((224, 224)),
     transforms.ToTensor(),
