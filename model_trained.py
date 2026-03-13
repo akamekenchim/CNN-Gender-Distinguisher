@@ -37,7 +37,7 @@ class CNN(nn.Module):
 transformer = transforms.Compose([
     transforms.Resize((224, 224)),
     transforms.RandomHorizontalFlip(0.5),
-    transforms.RandomRotation(20),
+    transforms.RandomRotation(25),
     transforms.ToTensor(),
     transforms.Normalize((0.5, 0.5, 0.5),(0.5, 0.5, 0.5))
 ])
