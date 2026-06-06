@@ -1,5 +1,8 @@
-Mở Google Colab, dán đoạn code python vào, sau đó truy cập link drive 
-https://drive.google.com/file/d/1m72KXXvr7jaHHO5xAKrfruOEJU8mATp1/view?usp=sharing
-để copy file .pth về drive của mình. Sau đó thay đường dẫn trong torch.load bằng
-đường dẫn đến file .pth trong drive (cần mount GG Drive to runtime trước).
-Thay đường dẫn trong ImageFolder(root="..") bằng folder ảnh của bạn.
+Hướng dẫn cài đặt / chạy:
+Terminal -> chạy lệnh:
+pip install opencv-python numpy torch torchvision pillow
+
+Đặt file trọng số (tải từ link drive) vào thư mục cùng cấp với các file code.
+Chạy script:
+python gender_camera.py
+Nhấn phím ESC (Mã ASCII: 27) bất kỳ lúc nào để giải phóng luồng camera và đóng cửa sổ an toàn.
