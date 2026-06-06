@@ -59,9 +59,9 @@ transformer2 = transforms.Compose([
     transforms.ToTensor(),
     transforms.Normalize((0.5, 0.5, 0.5),(0.5, 0.5, 0.5))
 ])
-
-model = myCNN()
-model.load_state_dict(torch.load("cnn_gender_model_5.pth", map_location=torch.device('cpu')))
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+model = myCNN().to(device)
+model.load_state_dict(torch.load("cnn_gender_model_5.pth", map_location=device))
 model.eval()
 
 
@@ -108,7 +108,7 @@ while True:
         face_pil = Image.fromarray(face_rgb)
         face_tensor = transformer2(face_pil)
         
-        face_tensor = face_tensor.unsqueeze(0)
+        face_tensor = face_tensor.unsqueeze(0).to(device)
         with torch.no_grad():
             logits = model(face_tensor) 
             probs = F.softmax(logits, dim=1)
