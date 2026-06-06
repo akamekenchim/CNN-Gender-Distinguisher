@@ -53,7 +53,7 @@ transformer2 = transforms.Compose([
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model = CNN().to(device) # Đưa model lên GPU
 #thay bằng đường dẫn đến file .pth bạn muốn load
-model.load_state_dict(torch.load("/content/drive/MyDrive/Nhập môn AI - Model Training/gender_savestate/cnn_gender_model_5.pth"))
+model.load_state_dict(torch.load("cnn_gender_model_5.pth", map_location=torch.device('cpu')))
 print(f"Training started on {device}...")
 
 data = ImageFolder(root="/content/temp_data", transform = transformer)
@@ -84,6 +84,6 @@ for i in range (80):
 model.eval()
 # Lưu lại bộ não AI
 # thay bằng đường dẫn đến thư mục bạn muốn lưu trạng thái model
-torch.save(model.state_dict(), "/content/drive/MyDrive/Nhập môn AI - Model Training/gender_savestate/cnn_gender_model_8.pth") 
+torch.save(model.state_dict(), "cnn_gender_model_8.pth") 
 
 print("Đã lưu mô hình thành công! 🎉")
